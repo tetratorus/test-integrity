@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+</head>
+
+<body>
+<script>
+    window.onerror = function() {
+        console.log('error??', arguments)
+    }
+    window.oninvalid = function() {
+        console.log('invalid?', arguments)
+    }
+    function integrityfailed() {
+        console.log('INTEGRITY FAILLLLLED', arguments)
+    }
+    function working() {
+        console.log('INTEGRITY WORKING', arguments)
+    }
+    var webpage = document.createElement('link')
+    webpage.rel = "stylesheet";
+    webpage.href = "http://localhost:3000"
+    webpage.integrity = "sha256-81LFyg8siOPYatBmabDhFUBWr/8WJrk/Mq+6m/VDwOg="
+    webpage.crossOrigin = "anonymous"
+    webpage.onerror=integrityfailed
+    webpage.onload=working
+    try {
+        var link = document.body.appendChild(webpage)
+    } catch (e) {
+        console.log('ERROR CAUGHT', e)
+    }
+    console.log(link)
+</script>
+<!-- <link href="http://localhost:3000/index.html" integrity="sha256-0fHdq4nftzX9oNjnrP4IszuNkFMgaC5Ohc8clin2j/M=" crossorigin="anonymous" type="text/css" rel="stylesheet"> -->
+<div>
+    <h1>THIS IS sfsf 2</h1>
+    <p>This domain is established to be used for illustrative examples in documents. You may use this
+    domain in examples without prior coordination or asking for permission.</p>
+    <p><a href="http://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
